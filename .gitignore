@@ -1,2 +1,8 @@
-target
+.DS_Store
+Thumbs.db
 Cargo.lock
+
+target
+
+*.orig
+*.log
