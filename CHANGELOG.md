@@ -1,3 +1,9 @@
+# 0.1.1
+> 2017-04-02
+
+#### Bug fixes
+- fixed the example bloc in the crate docs
+
 # 0.1.0
 > 2017-04-02
 

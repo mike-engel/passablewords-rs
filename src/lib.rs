@@ -17,6 +17,7 @@
 //!
 //! # Example
 //!
+//! ```
 //! extern crate passablewords;
 //!
 //! use passablewords::{check_password, PassablewordResult};
@@ -32,6 +33,7 @@
 //!         }
 //!     }
 //! }
+//! ```
 
 #[macro_use]
 extern crate lazy_static;
