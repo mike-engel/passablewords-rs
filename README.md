@@ -24,12 +24,12 @@ file.
 
 ```
 [dependencies]
-passablewords = "0.1.0"
+passablewords = "1"
 ```
 
 # Using `passablewords`
 
-For more information on how to use this library, please refer to the [docs](https://docs.rs/passablewords/0.1.0/passablewords/).
+For more information on how to use this library, please refer to the [docs](https://docs.rs/passablewords).
 
 Generally, however, you would use it similar to this example.
 
@@ -45,10 +45,22 @@ fn main() {
             PassablewordResult::TooShort => println!("Your password should be longer than 8 characters"),
             PassablewordResult::TooCommon => println!("Your should be more unique"),
             PassablewordResult::TooSimple => println!("Your should be more random"),
+            PassablewordResult::NonAsciiPassword => println!("Your password should only contain ASCII characters"),
             PassablewordResult::InternalError => println!
         }
     }
 }
+```
+
+## How fast is it?
+
+Here are the benchmarks running on a 2017 MacBook Pro with 2.3GHz i5. It's pretty darn fast!
+
+```
+test bench_check_common_password ... bench:          26 ns/iter (+/- 5)
+test bench_check_ok_password     ... bench:   1,497,032 ns/iter (+/- 435,657)
+test bench_check_short_password  ... bench:           1 ns/iter (+/- 0)
+test bench_check_simple_password ... bench:     166,063 ns/iter (+/- 70,071)
 ```
 
 # Developing

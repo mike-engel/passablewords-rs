@@ -1,3 +1,14 @@
+# 1.0.0
+> 2017-07-01
+
+The 1.0.0 release of passablewords for rust!
+
+- Added the benchmarks to the README
+- Attempted to store the passwords in a rust file, but found performance to drop,
+  so this will continue reading from the text file.
+- Dependency updates
+- New error `NonAsciiPassword` for catching a zxcvbn error
+
 # 0.1.1
 > 2017-04-02
 

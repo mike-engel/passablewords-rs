@@ -4,12 +4,12 @@ description = "A library to check the strength of a password in a sane way"
 repository = "https://github.com/mike-engel/passablewords"
 documentation = "https://docs.rs/passablewords"
 readme = "README.md"
-version = "0.1.1"
+version = "1.0.0"
 authors = ["Mike Engel <mike@mike-engel.com>"]
 license = "MIT"
 keywords = ["password", "passphrase", "security", "entropy", "authentication"]
 categories = ["authentication"]
 
 [dependencies]
-lazy_static = "0.2.6"
-zxcvbn = "0.4.3"
+lazy_static = "0.2"
+zxcvbn = "0.6"

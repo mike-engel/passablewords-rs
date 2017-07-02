@@ -43,7 +43,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::collections::HashSet;
 use std::iter::FromIterator;
-use zxcvbn::zxcvbn;
+use zxcvbn::{zxcvbn, ZxcvbnError};
 
 lazy_static! {
     static ref FILE_CONTENTS: String = {
@@ -73,6 +73,8 @@ pub enum PasswordError {
     /// The entropy of the password is too low, which means it could be easily guessable/crackable.
     /// A more random password should be used instead.
     TooSimple,
+    /// The password isn't using ascii characters, a requirement that zxcvbn has
+    NonAsciiPassword,
     /// Something went wrong during the password checks and a normal error couldn't be returned.
     InternalError,
 }
@@ -136,15 +138,20 @@ pub fn check_uniqueness(password: &str) -> PassablewordResult {
 /// }
 /// ```
 pub fn check_entropy(password: &str) -> PassablewordResult {
-    match zxcvbn(password, None) {
-        Some(result) => {
+    match zxcvbn(password, &[]) {
+        Ok(result) => {
             if result.score >= 3 {
                 Ok(())
             } else {
                 Err(PasswordError::TooSimple)
             }
         }
-        None => Err(PasswordError::InternalError),
+        Err(zxcvbn_error) => {
+            match zxcvbn_error {
+                ZxcvbnError::NonAsciiPassword => Err(PasswordError::NonAsciiPassword),
+                _ => Err(PasswordError::InternalError),
+            }
+        }
     }
 }
 
@@ -166,7 +173,9 @@ pub fn check_entropy(password: &str) -> PassablewordResult {
 /// }
 /// ```
 pub fn check_password(password: &str) -> PassablewordResult {
-    check_length(password).and(check_uniqueness(password)).and(check_entropy(password))
+    check_length(password).and(check_uniqueness(password)).and(
+        check_entropy(password),
+    )
 }
 
 #[cfg(test)]
