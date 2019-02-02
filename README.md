@@ -1,5 +1,13 @@
 # passablewords
 
+---
+
+# DEPRECATED
+
+I'm not planning on maintaining this any longer. Please just use [zxcvbn](https://github.com/shssoichiro/zxcvbn-rs) instead.
+
+---
+
 `passablewords` is a password validation library which checks a password against a million of
 the most common as well as it's ability to be cracked.
 

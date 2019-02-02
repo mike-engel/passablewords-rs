@@ -1,4 +1,11 @@
+# 1.0.1
+
+> 2019-02-02
+
+Deprecation. Use zxcvbn instead!
+
 # 1.0.0
+
 > 2017-07-01
 
 The 1.0.0 release of passablewords for rust!
@@ -10,12 +17,15 @@ The 1.0.0 release of passablewords for rust!
 - New error `NonAsciiPassword` for catching a zxcvbn error
 
 # 0.1.1
+
 > 2017-04-02
 
 #### Bug fixes
+
 - fixed the example bloc in the crate docs
 
 # 0.1.0
+
 > 2017-04-02
 
 The initial release of passablewords for rust. Since this is 0.1.0, things could
@@ -26,5 +36,6 @@ change in the future!
 - Checks the randomness of the password in an attempt to deter hackers
 
 #### Roadmap to 1.0.0
+
 - Gather any feedback to make sure the API is sane
 - Attempt to increase performance (finishes in < 2ms right now)
